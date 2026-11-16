@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CSS3 Revision · Révision CSS3</title>
+<style>
+:root{--bg:#faf7f2;--fg:#2b2118;--card:#fff;--ac:#8b4513;--code:#f2ebe0;--bd:#e3d6c4;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1d1712;--fg:#f0e6d8;--card:#2a2119;--ac:#e0a066;--code:#1a130e;--bd:#40342a}}
+:root[data-theme="dark"]{--bg:#1d1712;--fg:#f0e6d8;--card:#2a2119;--ac:#e0a066;--code:#1a130e;--bd:#40342a}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif}
+en,fr{display:block}en.i,fr.i{display:inline}
+body[data-l=en] fr,body[data-l=fr] en{display:none}
+header{position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);border-bottom:1px solid var(--bd);display:flex;justify-content:space-between;align-items:center;padding:10px 16px;z-index:5}
+header b{color:var(--ac)}
+button{font:inherit;background:var(--ac);color:var(--bg);border:0;border-radius:8px;padding:6px 14px;cursor:pointer}
+main{max-width:880px;margin:0 auto;padding:16px}
+section{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:16px 18px;margin:0 0 18px}
+h1{font-size:1.6rem;margin:.3em 0}h2{font-size:1.25rem;color:var(--ac);margin:0 0 .5em}h3{font-size:1rem;margin:1em 0 .2em}
+ul{margin:.3em 0 .6em;padding-left:1.3em}li{margin:.2em 0}
+.tip,.trap{padding:4px 12px;background:var(--code);border-radius:0 8px 8px 0;margin:.5em 0}
+.tip{border-left:4px solid var(--ac)}.trap{border-left:4px solid #c0392b}
+pre{background:var(--code);padding:10px;border-radius:8px;overflow-x:auto;font-size:.85rem;margin:.4em 0}
+.demo{border:1px dashed var(--bd);border-radius:8px;padding:12px;margin:.4em 0;overflow-x:auto}
+.lab{font-size:.75rem;text-transform:uppercase;letter-spacing:.05em;color:var(--ac);margin-top:.6em}
+table.x{border-collapse:collapse;width:100%;font-size:.9rem;margin:.4em 0}table.x td,table.x th{border:1px solid var(--bd);padding:5px 8px;text-align:left;vertical-align:top}table.x th{background:var(--code)}
+.sw{display:inline-block;width:70px;height:42px;border-radius:6px;margin:3px;color:#fff;font-size:.7rem;padding:2px 4px;vertical-align:top}
+.m{background:#f5c6a0;padding:14px;width:fit-content;color:#222;font-size:.75rem}
+.m .b{background:#e8b84a;padding:12px;border:4px solid #8b4513}.m .p{background:#9cc9a1;padding:14px}.m .c{background:#7fb3e6;padding:10px 24px;text-align:center}
+.fx{display:flex;background:var(--code);border-radius:6px;padding:6px;margin:4px 0}
+.fx i{background:var(--ac);color:var(--bg);font-style:normal;padding:6px 14px;margin:0 3px;border-radius:4px}
+.pr{position:relative;height:100px;background:var(--code);border-radius:8px;padding:8px}
+.pr .bd{position:absolute;top:8px;right:8px;background:#c0392b;color:#fff;padding:2px 10px;border-radius:12px;font-size:.8rem}
+.fl{overflow:hidden}.fl .ph{float:left;width:90px;height:60px;background:var(--ac);margin:0 10px 4px 0;border-radius:6px}
+.mn{list-style:none;margin:0;padding:0;display:flex;gap:2px}.mn a{display:block;padding:8px 14px;background:#4b2e1e;color:#fff;text-decoration:none}.mn a:hover{background:orange}
+.tb{border-collapse:collapse;width:100%}.tb th,.tb td{border:1px solid #8b4513;padding:6px;text-align:center}.tb th{background:#4b2e1e;color:#fff}.tb tr:nth-child(even){background:#f5efe6;color:#222}
+.sel .star{color:#c0392b;font-weight:bold}.sel .g>li{color:#2e7d32}
+.cas li{color:black}.cas .carte li{color:blue}.cas li.star{color:orange}.cas #bo li.star{color:red}.cas ul{background:#fff;margin:4px 0}
+.bg1{height:70px;border-radius:8px;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20'%3E%3Ccircle cx='10' cy='10' r='6' fill='%23e8b84a'/%3E%3C/svg%3E") no-repeat right bottom;border:1px solid #ccc}
+</style></head>
+<body data-l="en">
+<header><b>CSS3</b><button id="lb" type="button">Français</button></header>
+<main>
+<h1><en>CSS3 – Detailed Revision Course</en><fr>CSS3 – Cours de révision détaillé</fr></h1>
+<en><p>Each chapter follows the same pattern: <b>the code → the live result → how it works, line by line → why use it → tricks and traps</b>.</p></en>
+<fr><p>Chaque chapitre suit le même schéma : <b>le code → le résultat en direct → comment ça marche, ligne par ligne → pourquoi l’utiliser → astuces et pièges</b>.</p></fr>
+
+<section><h2>1. <en class="i">The rule: WHO / WHAT / HOW</en><fr class="i">La règle : QUI / QUOI / COMMENT</fr></h2>
+<pre>h2 {
+  color: red;
+  text-align: center;
+}</pre>
+<div class="demo"><h3 style="color:red;text-align:center;margin:0">Aa Bb Cc</h3></div>
+<en><h3>How it works, line by line</h3><ul>
+<li><code>h2</code> = the <b>selector</b> (WHO?): every &lt;h2&gt; of the page.</li>
+<li><code>{ }</code> = the block that contains all the declarations for that selector.</li>
+<li><code>color: red;</code> = a <b>declaration</b>: property <code>color</code> (WHAT changes?) + <code>:</code> + value <code>red</code> (HOW?) + <code>;</code>.</li>
+<li><code>text-align: center;</code> = second declaration: centres the content of the title inside its line.</li></ul>
+<h3>Why</h3><ul><li>CSS separates content (HTML) from presentation: change one rule and all the h2 of the site change.</li></ul>
+<h3>Where to write CSS</h3><ul>
+<li><b>External (best):</b> <code>&lt;link rel="stylesheet" href="style.css"&gt;</code> in the &lt;head&gt;. One file for the whole site.</li>
+<li><b>Internal:</b> a <code>&lt;style&gt;</code> tag in the &lt;head&gt;. One page only; good for a quick test.</li>
+<li><b>Inline:</b> <code>style="color:red;"</code> on the tag. One element only; strongest but messy. No selector, no braces.</li>
+<li>Priority: inline wins; internal vs external → the one written <b>last</b> wins. A .css file never contains &lt;style&gt;.</li></ul>
+<div class="tip"><b>Trick:</b> “:” between property and value, “;” after each declaration, “{ }” around the block. Comments: <code>/* */</code> only. Decimals use a point: <code>1.5em</code>.</div>
+<div class="trap"><b>Trap:</b> a forgotten “;” cancels the NEXT declaration (the browser reads both lines as one wrong value).</div></en>
+<fr><h3>Comment ça marche, ligne par ligne</h3><ul>
+<li><code>h2</code> = le <b>sélecteur</b> (QUI ?) : tous les &lt;h2&gt; de la page.</li>
+<li><code>{ }</code> = le bloc qui contient toutes les déclarations de ce sélecteur.</li>
+<li><code>color: red;</code> = une <b>déclaration</b> : propriété <code>color</code> (QUOI change ?) + <code>:</code> + valeur <code>red</code> (COMMENT ?) + <code>;</code>.</li>
+<li><code>text-align: center;</code> = seconde déclaration : centre le contenu du titre dans sa ligne.</li></ul>
+<h3>Pourquoi</h3><ul><li>CSS sépare le contenu (HTML) de la présentation : on change une règle et tous les h2 du site changent.</li></ul>
+<h3>Où écrire le CSS</h3><ul>
+<li><b>Externe (le mieux) :</b> <code>&lt;link rel="stylesheet" href="style.css"&gt;</code> dans le &lt;head&gt;. Un seul fichier pour tout le site.</li>
+<li><b>Interne :</b> une balise <code>&lt;style&gt;</code> dans le &lt;head&gt;. Une seule page ; pratique pour un test rapide.</li>
+<li><b>Inline (en ligne) :</b> <code>style="color:red;"</code> sur la balise. Un seul élément ; le plus fort mais brouillon. Ni sélecteur, ni accolades.</li>
+<li>Priorité : l’inline gagne ; interne contre externe → celui écrit <b>en dernier</b> gagne. Un fichier .css ne contient jamais &lt;style&gt;.</li></ul>
+<div class="tip"><b>Astuce :</b> « : » entre propriété et valeur, « ; » après chaque déclaration, « { } » autour du bloc. Commentaires : <code>/* */</code> uniquement. Décimales avec un point : <code>1.5em</code>.</div>
+<div class="trap"><b>Piège :</b> un « ; » oublié annule la déclaration SUIVANTE (le navigateur lit les deux lignes comme une seule valeur fausse).</div></fr></section>
+
+<section><h2>2. <en class="i">Colours and units</en><fr class="i">Couleurs et unités</fr></h2>
+<pre>color: #FF0000;   color: rgb(255,0,0);   background: rgba(0,0,0,0.5);   font-size: 1.5em;</pre>
+<div class="demo"><span class="sw" style="background:#FF0000">#FF0000</span><span class="sw" style="background:#00FF00;color:#000">#00FF00</span><span class="sw" style="background:#0000FF">#0000FF</span><span class="sw" style="background:#FFFF00;color:#000">#FFFF00</span><span class="sw" style="background:#808080">#808080</span><span class="sw" style="background:rgba(0,0,0,.5)">rgba .5</span><span class="sw" style="background:#000">#000000</span></div>
+<en><h3>How it works</h3><ul>
+<li><b>Hex</b> <code>#RRGGBB</code>: Red, Green, Blue, each from <code>00</code> (none) to <code>FF</code> (max). <code>#FF0000</code> = red only. <code>#FFFF00</code> = red + green = yellow. <code>#808080</code> = half of everything = grey. Short form: <code>#f00</code>.</li>
+<li><b>rgb(255,0,0)</b>: same thing in decimal, 0 to 255.</li>
+<li><b>rgba(0,0,0,0.5)</b>: the 4th number is opacity, from 0 (invisible) to 1 (solid). Here: black at 50 %.</li>
+<li><b>Absolute units</b> (px, pt, cm, mm): fixed size. <b>Relative units</b>: <code>em</code> and <code>%</code> depend on the parent; <code>rem</code> on the root; <code>vw</code>/<code>vh</code> on the window.</li></ul>
+<h3>Why</h3><ul><li>Relative units adapt to the screen and to the user’s font settings, so prefer them for layout.</li></ul>
+<div class="trap"><b>Traps:</b><ul><li><code>color: ff0000</code> → the <code>#</code> is missing.</li><li><code>margin: 10</code> → a unit is mandatory (<code>10px</code>); “16 px” with a space is also wrong.</li><li>Nested em multiply: parent <code>1.5em</code> (24px), child <code>1.5em</code> = 36px, not 24px.</li></ul></div></en>
+<fr><h3>Comment ça marche</h3><ul>
+<li><b>Hexadécimal</b> <code>#RRVVBB</code> : Rouge, Vert, Bleu, chacun de <code>00</code> (rien) à <code>FF</code> (maximum). <code>#FF0000</code> = rouge seul. <code>#FFFF00</code> = rouge + vert = jaune. <code>#808080</code> = la moitié de tout = gris. Forme courte : <code>#f00</code>.</li>
+<li><b>rgb(255,0,0)</b> : la même chose en décimal, de 0 à 255.</li>
+<li><b>rgba(0,0,0,0.5)</b> : le 4e nombre est l’opacité, de 0 (invisible) à 1 (opaque). Ici : noir à 50 %.</li>
+<li><b>Unités absolues</b> (px, pt, cm, mm) : taille fixe. <b>Unités relatives</b> : <code>em</code> et <code>%</code> dépendent du parent ; <code>rem</code> de la racine ; <code>vw</code>/<code>vh</code> de la fenêtre.</li></ul>
+<h3>Pourquoi</h3><ul><li>Les unités relatives s’adaptent à l’écran et aux réglages de police de l’utilisateur : on les préfère pour la mise en page.</li></ul>
+<div class="trap"><b>Pièges :</b><ul><li><code>color: ff0000</code> → il manque le <code>#</code>.</li><li><code>margin: 10</code> → l’unité est obligatoire (<code>10px</code>) ; « 16 px » avec un espace est faux aussi.</li><li>Les em imbriqués se multiplient : parent <code>1.5em</code> (24px), enfant <code>1.5em</code> = 36px, pas 24px.</li></ul></div></fr></section>
+
+<section><h2>3. <en class="i">Text</en><fr class="i">Texte</fr></h2>
+<pre>p {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+  line-height: 1.5;
+}</pre>
+<div class="demo"><p style="margin:0;font-family:Georgia,'Times New Roman',serif;font-size:18px;font-weight:bold;text-transform:uppercase;line-height:1.5">Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor.</p></div>
+<div class="demo"><span style="font-style:italic">italic</span> · <span style="text-decoration:underline">underline</span> · <span style="text-decoration:line-through">line-through</span> · <span style="font-variant:small-caps">small-caps</span> · <span style="text-transform:capitalize">capitalize each word</span></div>
+<en><h3>How it works</h3><ul>
+<li><code>font-family</code>: a <b>stack</b>. The browser tries each font left to right and uses the first one installed. The last must be a generic family (<code>serif</code>, <code>sans-serif</code>, <code>monospace</code>). A name with a space needs quotes.</li>
+<li><code>font-size: 18px</code>: size of the letters. <code>font-weight</code> = bold; <code>font-style</code> = italic.</li>
+<li><code>text-transform</code> changes the case without touching the HTML (uppercase, lowercase, capitalize).</li>
+<li><code>line-height: 1.5</code>: line spacing = 1.5 × the font size. Improves readability.</li>
+<li><code>text-align</code> aligns the CONTENT (left, center, right, justify). <code>text-decoration</code>: underline, line-through, none (removes the underline of links).</li></ul>
+<div class="trap"><b>Traps:</b> small capitals = <code>font-variant: small-caps</code> (not font-style). Write <code>underline</code>, not “underlined”.</div></en>
+<fr><h3>Comment ça marche</h3><ul>
+<li><code>font-family</code> : une <b>pile</b>. Le navigateur essaie chaque police de gauche à droite et prend la première installée. La dernière doit être une famille générique (<code>serif</code>, <code>sans-serif</code>, <code>monospace</code>). Un nom avec espace prend des guillemets.</li>
+<li><code>font-size: 18px</code> : taille des lettres. <code>font-weight</code> = gras ; <code>font-style</code> = italique.</li>
+<li><code>text-transform</code> change la casse sans toucher au HTML (uppercase, lowercase, capitalize).</li>
+<li><code>line-height: 1.5</code> : interligne = 1,5 × la taille de police. Améliore la lisibilité.</li>
+<li><code>text-align</code> aligne le CONTENU (left, center, right, justify). <code>text-decoration</code> : underline, line-through, none (supprime le soulignement des liens).</li></ul>
+<div class="trap"><b>Pièges :</b> les petites capitales = <code>font-variant: small-caps</code> (pas font-style). Écrire <code>underline</code>, pas « underlined ».</div></fr></section>
+
+<section class="sel"><h2>4. <en class="i">Selectors: aim at the right target</en><fr class="i">Sélecteurs : viser la bonne cible</fr></h2>
+<pre>.star { color: red; font-weight: bold; }
+ul.g &gt; li { color: green; }
+li.star { text-decoration: underline; }</pre>
+<div class="demo"><ul class="g"><li>li</li><li class="star">li class="star"</li></ul><p class="star" style="margin:0">p class="star"</p></div>
+<en><h3>How it works</h3><ul>
+<li><code>.star</code>: the dot means <b>class</b>. It targets EVERY element with <code>class="star"</code> (here the li and the p).</li>
+<li><code>ul.g &gt; li</code>: <code>&gt;</code> = direct child only. Every li placed directly inside a ul of class g.</li>
+<li><code>li.star</code>: no space = same element: a li AND of class star.</li></ul>
+<table class="x"><tr><th>Write</th><th>Targets</th><th>Memory trick</th></tr>
+<tr><td>h1, h2</td><td>h1 AND h2</td><td>comma = and</td></tr>
+<tr><td>*</td><td>everything</td><td>star = all</td></tr>
+<tr><td>#horaires</td><td>ONE element (unique id)</td><td># = hash = one</td></tr>
+<tr><td>section li</td><td>li anywhere inside section</td><td>space = inside</td></tr>
+<tr><td>h2 + p</td><td>the ONE p right after h2</td><td>+ = one neighbour</td></tr>
+<tr><td>h2 ~ p</td><td>ALL p after h2</td><td>~ = all following</td></tr>
+<tr><td>a[title]</td><td>a having a title attribute</td><td>[ ] = has attribute</td></tr>
+<tr><td>a[title*='ici']</td><td>title contains “ici”</td><td>*= contains</td></tr>
+<tr><td>a[href^='http']</td><td>href starts with http</td><td>^= starts</td></tr>
+<tr><td>a[href$='.pdf']</td><td>href ends with .pdf</td><td>$= ends</td></tr></table>
+<h3>Pseudo-classes and pseudo-elements</h3><ul>
+<li><b>Pseudo-class</b> (one colon) = a STATE: <code>a:link</code>, <code>a:visited</code>, <code>a:hover</code> (mouse over), <code>a:active</code> (while clicking), <code>input:focus</code>.</li>
+<li><b>Pseudo-element</b> = a PART: <code>p:first-letter</code> (drop cap), <code>p:first-line</code>, <code>:before</code> / <code>:after</code> with <code>content: ' *'</code>.</li>
+<li>Link order <b>LoVe-HAte</b>: Link, Visited, Hover, Active. Otherwise one rule overwrites another.</li></ul>
+<div class="trap"><b>Traps:</b> <code>h1, em</code> is NOT “em inside h1” (write <code>h1 em</code>). <code>p.intro</code> (glued) ≠ <code>p .intro</code> (space). <code>ol li</code> is not direct children (use <code>ol &gt; li</code>). In HTML write <code>class="intro"</code> without the dot.</div></en>
+<fr><h3>Comment ça marche</h3><ul>
+<li><code>.star</code> : le point signifie <b>classe</b>. Il vise TOUS les éléments ayant <code>class="star"</code> (ici le li et le p).</li>
+<li><code>ul.g &gt; li</code> : <code>&gt;</code> = enfant direct uniquement. Chaque li placé directement dans un ul de classe g.</li>
+<li><code>li.star</code> : pas d’espace = même élément : un li ET de classe star.</li></ul>
+<table class="x"><tr><th>On écrit</th><th>Cible</th><th>Moyen mnémotechnique</th></tr>
+<tr><td>h1, h2</td><td>h1 ET h2</td><td>virgule = et</td></tr>
+<tr><td>*</td><td>tout</td><td>étoile = tout</td></tr>
+<tr><td>#horaires</td><td>UN seul élément (id unique)</td><td># = dièse = un seul</td></tr>
+<tr><td>section li</td><td>li n’importe où dans section</td><td>espace = dedans</td></tr>
+<tr><td>h2 + p</td><td>LE p juste après h2</td><td>+ = un voisin</td></tr>
+<tr><td>h2 ~ p</td><td>TOUS les p après h2</td><td>~ = tous les suivants</td></tr>
+<tr><td>a[title]</td><td>a ayant l’attribut title</td><td>[ ] = a l’attribut</td></tr>
+<tr><td>a[title*='ici']</td><td>title contient « ici »</td><td>*= contient</td></tr>
+<tr><td>a[href^='http']</td><td>href commence par http</td><td>^= commence</td></tr>
+<tr><td>a[href$='.pdf']</td><td>href finit par .pdf</td><td>$= finit</td></tr></table>
+<h3>Pseudo-classes et pseudo-éléments</h3><ul>
+<li><b>Pseudo-classe</b> (un deux-points) = un ÉTAT : <code>a:link</code>, <code>a:visited</code>, <code>a:hover</code> (souris dessus), <code>a:active</code> (pendant le clic), <code>input:focus</code>.</li>
+<li><b>Pseudo-élément</b> = une PARTIE : <code>p:first-letter</code> (lettrine), <code>p:first-line</code>, <code>:before</code> / <code>:after</code> avec <code>content: ' *'</code>.</li>
+<li>Ordre <b>LoVe-HAte</b> : Link, Visited, Hover, Active. Sinon une règle écrase l’autre.</li></ul>
+<div class="trap"><b>Pièges :</b> <code>h1, em</code> n’est PAS « em dans h1 » (écrire <code>h1 em</code>). <code>p.intro</code> (collé) ≠ <code>p .intro</code> (espace). <code>ol li</code> n’est pas « enfants directs » (utiliser <code>ol &gt; li</code>). En HTML on écrit <code>class="intro"</code> sans le point.</div></fr></section>
+
+<section class="cas"><h2>5. <en class="i">The cascade: when 2 rules fight</en><fr class="i">La cascade : quand 2 règles se battent</fr></h2>
+<pre>li { color: black; }
+.carte li { color: blue; }
+li.star { color: orange; }
+#bo li.star { color: red; }</pre>
+<div class="demo"><ul><li>li</li></ul><ul class="carte"><li>.carte li</li><li class="star">.carte li.star</li></ul><div id="bo"><ul class="carte"><li class="star">#bo .carte li.star</li></ul></div></div>
+<en><h3>Weights</h3><table class="x"><tr><th>Inline</th><th>#id</th><th>.class [attr] :pseudo-class</th><th>element ::pseudo-element</th><th>*</th></tr><tr><td>1000</td><td>100</td><td>10</td><td>1</td><td>0</td></tr></table>
+<h3>Calculating for the 4 rules above</h3><ul>
+<li><code>li</code> → 1 point (1 element).</li>
+<li><code>.carte li</code> → 10 + 1 = <b>11</b>.</li>
+<li><code>li.star</code> → 1 + 10 = <b>11</b> → tie with the previous one: the <b>last written</b> wins (orange).</li>
+<li><code>#bo li.star</code> → 100 + 1 + 10 = <b>111</b> → wins over all: the last li is red.</li></ul>
+<h3>Method (4 steps)</h3><ul><li>1) List the rules that aim at the element. 2) Add the weights. 3) Heaviest wins. 4) Tie → last written wins. Inheritance is the weakest of all.</li>
+<li><b>Inherited:</b> color, font-*, text-align, line-height, list-style. <b>Not inherited:</b> margin, padding, border, background, width, height, position, display.</li></ul>
+<div class="trap"><b>Trap:</b> order only matters on a tie: a #id rule written BEFORE a p rule still wins. Avoid <code>!important</code> (it beats everything and makes the code hard to fix).</div></en>
+<fr><h3>Les poids</h3><table class="x"><tr><th>Inline</th><th>#id</th><th>.classe [attr] :pseudo-classe</th><th>élément ::pseudo-élément</th><th>*</th></tr><tr><td>1000</td><td>100</td><td>10</td><td>1</td><td>0</td></tr></table>
+<h3>Calcul pour les 4 règles ci-dessus</h3><ul>
+<li><code>li</code> → 1 point (1 élément).</li>
+<li><code>.carte li</code> → 10 + 1 = <b>11</b>.</li>
+<li><code>li.star</code> → 1 + 10 = <b>11</b> → égalité avec la précédente : la <b>dernière écrite</b> gagne (orange).</li>
+<li><code>#bo li.star</code> → 100 + 1 + 10 = <b>111</b> → gagne contre toutes : le dernier li est rouge.</li></ul>
+<h3>Méthode (4 étapes)</h3><ul><li>1) Lister les règles qui visent l’élément. 2) Additionner les poids. 3) Le plus lourd gagne. 4) Égalité → le dernier écrit gagne. L’héritage est le plus faible de tous.</li>
+<li><b>Hérités :</b> color, font-*, text-align, line-height, list-style. <b>Non hérités :</b> margin, padding, border, background, width, height, position, display.</li></ul>
+<div class="trap"><b>Piège :</b> l’ordre ne compte qu’en cas d’égalité : une règle #id écrite AVANT une règle p gagne quand même. Éviter <code>!important</code> (il bat tout et rend le code difficile à corriger).</div></fr></section>
+
+<section><h2>6. <en class="i">The box model</en><fr class="i">Le modèle de boîte</fr></h2>
+<pre>.box {
+  width: 300px;
+  padding: 20px;
+  border: 4px solid #8b4513;
+  margin: 0 auto;
+  box-sizing: border-box;
+}</pre>
+<div class="demo"><div class="m">margin<div class="b">border<div class="p">padding<div class="c">content</div></div></div></div></div>
+<en><h3>How it works</h3><ul>
+<li>Every element is a box of 4 layers, from inside to outside: <b>content → padding → border → margin</b>.</li>
+<li><code>padding: 20px</code>: space INSIDE the border, coloured by the background.</li>
+<li><code>border: 4px solid #8b4513</code>: width + style + colour. <b>No style = no border.</b></li>
+<li><code>margin: 0 auto</code>: 0 above and below, <code>auto</code> left and right = the block is centred (it needs a <code>width</code>).</li>
+<li><code>box-sizing: border-box</code>: <code>width</code> now INCLUDES padding and border, so the box stays 300px wide.</li></ul>
+<h3>Calculation</h3><ul><li>Without border-box: visible width = 300 + 2×20 (padding) + 2×4 (border) = <b>348px</b> (+ 2×margin for the space used).</li></ul>
+<h3>Shorthands (clockwise: Top Right Bottom Left)</h3><ul>
+<li><code>margin: 10px</code> → 4 sides.</li><li><code>margin: 10px 20px</code> → top-bottom | left-right.</li><li><code>margin: 10px 20px 30px</code> → top | left-right | bottom.</li><li><code>margin: 10px 20px 30px 40px</code> → top right bottom left.</li></ul>
+<h3>Margin vs padding</h3><ul><li>Margin: outside the border, transparent, negative values allowed. Padding: inside, coloured, negative forbidden. To “air” the content, use <b>padding</b>.</li></ul>
+<div class="trap"><b>Traps:</b> <code>border: 3px blue</code> shows nothing. <code>width</code>/<code>height</code> have no effect on inline elements (span, a). For responsive images: <code>img { max-width: 100%; }</code>.</div></en>
+<fr><h3>Comment ça marche</h3><ul>
+<li>Chaque élément est une boîte de 4 couches, de l’intérieur vers l’extérieur : <b>contenu → padding → bordure → margin</b>.</li>
+<li><code>padding: 20px</code> : espace À L’INTÉRIEUR de la bordure, coloré par le fond.</li>
+<li><code>border: 4px solid #8b4513</code> : épaisseur + style + couleur. <b>Sans style = pas de bordure.</b></li>
+<li><code>margin: 0 auto</code> : 0 en haut et en bas, <code>auto</code> à gauche et à droite = le bloc est centré (il faut un <code>width</code>).</li>
+<li><code>box-sizing: border-box</code> : <code>width</code> INCLUT maintenant padding et bordure, donc la boîte reste large de 300px.</li></ul>
+<h3>Calcul</h3><ul><li>Sans border-box : largeur visible = 300 + 2×20 (padding) + 2×4 (bordure) = <b>348px</b> (+ 2×margin pour la place occupée).</li></ul>
+<h3>Raccourcis (sens horaire : Haut Droite Bas Gauche)</h3><ul>
+<li><code>margin: 10px</code> → les 4 côtés.</li><li><code>margin: 10px 20px</code> → haut-bas | gauche-droite.</li><li><code>margin: 10px 20px 30px</code> → haut | gauche-droite | bas.</li><li><code>margin: 10px 20px 30px 40px</code> → haut droite bas gauche.</li></ul>
+<h3>Margin ou padding ?</h3><ul><li>Margin : à l’extérieur de la bordure, transparente, valeurs négatives permises. Padding : à l’intérieur, colorée, négatif interdit. Pour « aérer » le contenu, utiliser <b>padding</b>.</li></ul>
+<div class="trap"><b>Pièges :</b> <code>border: 3px blue</code> n’affiche rien. <code>width</code>/<code>height</code> sans effet sur les éléments inline (span, a). Images adaptatives : <code>img { max-width: 100%; }</code>.</div></fr></section>
+
+<section><h2>7. <en class="i">Borders, shadows, backgrounds</en><fr class="i">Bordures, ombres, arrière-plans</fr></h2>
+<pre>.a { border: 3px solid #8b4513; border-radius: 10px; box-shadow: 6px 6px 4px gray; }
+.b { border: 3px dashed #8b4513; }
+.c { border-radius: 50%; background-color: #8b4513; }
+.d { background: white url('a.png') no-repeat right bottom; }</pre>
+<div class="demo" style="display:flex;flex-wrap:wrap;gap:14px;align-items:center"><div style="width:90px;height:50px;border:3px solid #8b4513;border-radius:10px;box-shadow:6px 6px 4px gray"></div><div style="width:90px;height:50px;border:3px dashed #8b4513"></div><div style="width:50px;height:50px;background:#8b4513;border-radius:50%"></div><div class="bg1" style="width:120px;height:50px"></div></div>
+<en><h3>How it works</h3><ul>
+<li><code>border-radius: 10px</code> rounds the corners (4 values: top-left, top-right, bottom-right, bottom-left). 50 % on a square = circle.</li>
+<li><code>box-shadow: 6px 6px 4px gray</code> = x offset, y offset, blur, colour: the shadow is 6px right, 6px down, softened by 4px.</li>
+<li>Border styles: solid, dotted, dashed, double, groove, ridge, inset, outset, none.</li>
+<li><code>background</code> shorthand: colour + <code>url('image')</code> + repeat + position. Here: white background, image once, in the bottom right corner (circle in the 4th box).</li>
+<li><code>background-repeat</code>: repeat (default), repeat-x (horizontal), repeat-y (vertical), no-repeat. <code>background-size</code>: cover, contain. <code>background-attachment: fixed</code> keeps the image still when scrolling.</li></ul>
+<div class="trap"><b>Traps:</b> <code>color</code> = TEXT colour, <code>background-color</code> = BACKGROUND colour. Write <code>url('a.png')</code>, not <code>url (a.png)</code> and not <code>a.png</code> alone.</div></en>
+<fr><h3>Comment ça marche</h3><ul>
+<li><code>border-radius: 10px</code> arrondit les coins (4 valeurs : haut-gauche, haut-droite, bas-droite, bas-gauche). 50 % sur un carré = cercle.</li>
+<li><code>box-shadow: 6px 6px 4px gray</code> = décalage x, décalage y, flou, couleur : l’ombre est à 6px à droite, 6px en bas, adoucie de 4px.</li>
+<li>Styles de bordure : solid, dotted, dashed, double, groove, ridge, inset, outset, none.</li>
+<li>Raccourci <code>background</code> : couleur + <code>url('image')</code> + répétition + position. Ici : fond blanc, image une seule fois, dans le coin en bas à droite (le cercle de la 4e boîte).</li>
+<li><code>background-repeat</code> : repeat (défaut), repeat-x (horizontal), repeat-y (vertical), no-repeat. <code>background-size</code> : cover, contain. <code>background-attachment: fixed</code> garde l’image immobile au défilement.</li></ul>
+<div class="trap"><b>Pièges :</b> <code>color</code> = couleur du TEXTE, <code>background-color</code> = couleur du FOND. Écrire <code>url('a.png')</code>, pas <code>url (a.png)</code> et pas <code>a.png</code> seul.</div></fr></section>
+
+<section><h2>8. <en class="i">A menu from a list</en><fr class="i">Un menu à partir d’une liste</fr></h2>
+<pre>.mn { list-style-type: none; margin: 0; padding: 0; }
+.mn li { display: inline-block; }
+.mn a { display: block; padding: 10px 15px; background-color: #4b2e1e;
+        color: white; text-decoration: none; }
+.mn a:hover { background-color: orange; }</pre>
+<div class="demo"><ul class="mn"><li><a href="#">1</a></li><li><a href="#">2</a></li><li><a href="#">3</a></li></ul></div>
+<en><h3>How it works, rule by rule</h3><ul>
+<li><b>Rule 1:</b> <code>list-style-type: none</code> removes the bullets; <code>margin: 0; padding: 0</code> removes the default left indent of the list.</li>
+<li><b>Rule 2:</b> <code>inline-block</code> puts the li side by side (like inline) while still accepting width, height and margin.</li>
+<li><b>Rule 3:</b> a link is inline, so padding and width would not work well. <code>display: block</code> makes the WHOLE rectangle clickable, with padding, a dark background, white text and no underline.</li>
+<li><b>Rule 4:</b> <code>a:hover</code> changes the colour when the mouse is over: hover the buttons above.</li></ul>
+<h3>Why</h3><ul><li>A menu is semantically a list of links: this recipe keeps the HTML clean and the style in CSS.</li></ul></en>
+<fr><h3>Comment ça marche, règle par règle</h3><ul>
+<li><b>Règle 1 :</b> <code>list-style-type: none</code> supprime les puces ; <code>margin: 0; padding: 0</code> supprime le retrait gauche par défaut de la liste.</li>
+<li><b>Règle 2 :</b> <code>inline-block</code> place les li côte à côte (comme inline) tout en acceptant width, height et margin.</li>
+<li><b>Règle 3 :</b> un lien est inline, donc padding et width ne marcheraient pas bien. <code>display: block</code> rend TOUT le rectangle cliquable, avec padding, fond foncé, texte blanc et sans soulignement.</li>
+<li><b>Règle 4 :</b> <code>a:hover</code> change la couleur quand la souris est dessus : survolez les boutons ci-dessus.</li></ul>
+<h3>Pourquoi</h3><ul><li>Un menu est sémantiquement une liste de liens : cette recette garde le HTML propre et le style dans le CSS.</li></ul></fr></section>
+
+<section><h2>9. <en class="i">Tables</en><fr class="i">Tableaux</fr></h2>
+<pre>table { border-collapse: collapse; width: 100%; }
+th, td { border: 1px solid #8b4513; padding: 8px; text-align: center; }
+th { background-color: #4b2e1e; color: white; }
+tr:nth-child(even) { background-color: #f5efe6; }
+caption { caption-side: bottom; font-style: italic; }</pre>
+<div class="demo"><table class="tb"><caption style="caption-side:bottom;font-style:italic">caption-side: bottom</caption><tr><th>A</th><th>B</th></tr><tr><td>1</td><td>2</td></tr><tr><td>3</td><td>4</td></tr><tr><td>5</td><td>6</td></tr></table></div>
+<en><h3>How it works</h3><ul>
+<li><code>border-collapse: collapse</code> merges the borders of neighbouring cells into one single line (default <code>separate</code> = double lines). Put it on <b>table</b>.</li>
+<li><code>th, td</code> (comma = and): border, inner space and centred text for all cells. Borders go on th and td, not on tr.</li>
+<li><code>tr:nth-child(even)</code>: every even row gets a pale background → <b>zebra</b> rows, easier to read.</li>
+<li><code>caption-side</code>: top (default) or bottom. With border-collapse, these are the only 2 table-specific properties.</li></ul></en>
+<fr><h3>Comment ça marche</h3><ul>
+<li><code>border-collapse: collapse</code> fusionne les bordures des cellules voisines en un seul trait (par défaut <code>separate</code> = doubles traits). À mettre sur <b>table</b>.</li>
+<li><code>th, td</code> (virgule = et) : bordure, espace intérieur et texte centré pour toutes les cellules. Les bordures vont sur th et td, pas sur tr.</li>
+<li><code>tr:nth-child(even)</code> : chaque ligne paire reçoit un fond pâle → lignes <b>zébrées</b>, plus faciles à lire.</li>
+<li><code>caption-side</code> : top (défaut) ou bottom. Avec border-collapse, ce sont les 2 seules propriétés propres aux tableaux.</li></ul></fr></section>
+
+<section><h2>10. <en class="i">Display and position</en><fr class="i">Display et position</fr></h2>
+<pre>.carte { position: relative; }
+.badge { position: absolute; top: 10px; right: 10px; }</pre>
+<div class="demo"><div class="pr">.carte<span class="bd">.badge</span></div></div>
+<en><h3>How it works</h3><ul>
+<li><code>.carte { position: relative }</code>: the card stays in the flow but becomes the <b>reference</b> for its children.</li>
+<li><code>.badge { position: absolute }</code>: leaves the flow (frees its place) and is placed relative to the nearest positioned ancestor, here .carte.</li>
+<li><code>top: 10px; right: 10px</code>: 10px from the top edge and 10px from the right edge of the card → corner badge.</li></ul>
+<table class="x"><tr><th>position</th><th>In the flow?</th><th>Moves from…</th></tr>
+<tr><td>static</td><td>yes</td><td>default; top/left have NO effect</td></tr><tr><td>relative</td><td>yes (keeps its place)</td><td>its own original place</td></tr>
+<tr><td>absolute</td><td>no</td><td>nearest positioned ancestor, else the page</td></tr><tr><td>fixed</td><td>no</td><td>the window (does not scroll): fixed menus</td></tr>
+<tr><td>sticky</td><td>yes</td><td>scrolls, then “sticks”</td></tr></table>
+<h3>Display</h3><ul>
+<li><b>block</b>: one per line, takes the whole width (div, p, h1-h6, ul, li, table, header, nav, section, footer).</li>
+<li><b>inline</b>: follows the text, size of its content, width/height ignored (span, a, em, strong, img).</li>
+<li><b>inline-block</b>: inline BUT accepts width, height, margin (menus).</li>
+<li><b>none</b>: disappears and takes no place (<code>visibility: hidden</code> hides but KEEPS the place). <b>flex</b>: flexible container.</li></ul>
+<div class="tip"><b>Trick:</b> display = nature of the box; position = its location. <code>left: 20px</code> = 20px away from the left edge → the element goes RIGHT.</div>
+<div class="trap"><b>Traps:</b> <code>display: absolute</code> and <code>position: inline-block</code> do not exist. If <code>a { width: 200px }</code> does nothing: a is inline → use <code>inline-block</code>.</div></en>
+<fr><h3>Comment ça marche</h3><ul>
+<li><code>.carte { position: relative }</code> : la carte reste dans le flux mais devient la <b>référence</b> de ses enfants.</li>
+<li><code>.badge { position: absolute }</code> : sort du flux (libère sa place) et se place par rapport à l’ancêtre positionné le plus proche, ici .carte.</li>
+<li><code>top: 10px; right: 10px</code> : à 10px du bord haut et à 10px du bord droit de la carte → badge dans le coin.</li></ul>
+<table class="x"><tr><th>position</th><th>Dans le flux ?</th><th>Se déplace depuis…</th></tr>
+<tr><td>static</td><td>oui</td><td>par défaut ; top/left SANS effet</td></tr><tr><td>relative</td><td>oui (garde sa place)</td><td>sa propre place d’origine</td></tr>
+<tr><td>absolute</td><td>non</td><td>l’ancêtre positionné le plus proche, sinon la page</td></tr><tr><td>fixed</td><td>non</td><td>la fenêtre (ne défile pas) : menus fixes</td></tr>
+<tr><td>sticky</td><td>oui</td><td>défile, puis « colle »</td></tr></table>
+<h3>Display</h3><ul>
+<li><b>block</b> : un par ligne, prend toute la largeur (div, p, h1-h6, ul, li, table, header, nav, section, footer).</li>
+<li><b>inline</b> : suit le texte, taille de son contenu, width/height ignorés (span, a, em, strong, img).</li>
+<li><b>inline-block</b> : inline MAIS accepte width, height, margin (menus).</li>
+<li><b>none</b> : disparaît et ne prend aucune place (<code>visibility: hidden</code> cache mais GARDE la place). <b>flex</b> : conteneur flexible.</li></ul>
+<div class="tip"><b>Astuce :</b> display = nature de la boîte ; position = son emplacement. <code>left: 20px</code> = à 20px du bord gauche → l’élément va vers la DROITE.</div>
+<div class="trap"><b>Pièges :</b> <code>display: absolute</code> et <code>position: inline-block</code> n’existent pas. Si <code>a { width: 200px }</code> ne fait rien : a est inline → utiliser <code>inline-block</code>.</div></fr></section>
+
+<section><h2>11. Float / clear</h2>
+<pre>.photo { float: left; width: 90px; }
+footer { clear: both; }</pre>
+<div class="demo fl"><div class="ph"></div><en class="i">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</en><fr class="i">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</fr></div>
+<en><h3>How it works</h3><ul>
+<li><code>float: left</code> pulls the element out to the left; the following text wraps around it, like a photo in a newspaper.</li>
+<li><code>clear: both</code>, set on the element that must go <b>below</b> (the footer), stops it from sliding next to the floats.</li>
+<li>Floats sit side by side while the real widths fit: 652 + 102 = 754 &lt; 800 → OK; 652 + 602 = 1254 &gt; 800 → the second goes under.</li>
+<li>A container holding only floats collapses to height 0: add <code>clear: both</code> after, or <code>overflow: hidden</code> on the container.</li></ul>
+<div class="trap"><b>Trap:</b> clear is NOT the opposite of float and is never set on the floating element.</div></en>
+<fr><h3>Comment ça marche</h3><ul>
+<li><code>float: left</code> envoie l’élément à gauche ; le texte suivant s’enroule autour, comme une photo dans un journal.</li>
+<li><code>clear: both</code>, mis sur l’élément qui doit passer <b>dessous</b> (le footer), l’empêche de se glisser à côté des floats.</li>
+<li>Les floats restent côte à côte tant que les largeurs réelles tiennent : 652 + 102 = 754 &lt; 800 → OK ; 652 + 602 = 1254 &gt; 800 → le second passe dessous.</li>
+<li>Un conteneur ne contenant que des floats s’effondre à hauteur 0 : ajouter <code>clear: both</code> après, ou <code>overflow: hidden</code> sur le conteneur.</li></ul>
+<div class="trap"><b>Piège :</b> clear n’est PAS le contraire de float et ne se met jamais sur l’élément flottant.</div></fr></section>
+
+<section><h2>12. Flexbox</h2>
+<pre>.barre { display: flex; justify-content: space-between; align-items: center; height: 60px; }
+.boite { display: flex; justify-content: center; align-items: center; height: 80px; }
+.col1 { flex: 1; }   .col3 { flex: 3; }</pre>
+<div class="demo"><div class="lab">flex-start</div><div class="fx" style="justify-content:flex-start"><i>1</i><i>2</i><i>3</i></div><div class="lab">center</div><div class="fx" style="justify-content:center"><i>1</i><i>2</i><i>3</i></div><div class="lab">flex-end</div><div class="fx" style="justify-content:flex-end"><i>1</i><i>2</i><i>3</i></div><div class="lab">space-between</div><div class="fx" style="justify-content:space-between"><i>1</i><i>2</i><i>3</i></div><div class="lab">space-around</div><div class="fx" style="justify-content:space-around"><i>1</i><i>2</i><i>3</i></div><div class="lab">center + center</div><div class="fx" style="justify-content:center;align-items:center;height:80px"><i>●</i></div><div class="lab">flex: 1 / flex: 3</div><div class="fx"><i style="flex:1;margin:0">1</i><i style="flex:3;margin:0 0 0 3px">3</i></div></div>
+<en><h3>How it works</h3><ul>
+<li><code>display: flex</code> goes on the <b>PARENT</b>: its direct children line up by themselves in a row.</li>
+<li><code>justify-content</code> distributes along the <b>MAIN axis</b> (the row): flex-start, flex-end, center, space-between (space only BETWEEN items), space-around (space AROUND each item).</li>
+<li><code>align-items</code> aligns on the <b>CROSS axis</b> (vertical in a row): stretch (default), flex-start, flex-end, center, baseline. <code>align-self</code> does it for ONE item.</li>
+<li><code>flex: 1</code> / <code>flex: 3</code>: the items share the free space in proportion → columns of 1/4 and 3/4.</li>
+<li><code>flex-direction</code>: row (default), column, row-reverse, column-reverse. <code>flex-wrap: wrap</code> goes to the next line when full.</li></ul>
+<h3>Why</h3><ul><li>Flexbox is the modern layout: navigation bars, columns, perfect centring (center + center). Float is only for wrapping text around an image.</li></ul>
+<div class="tip"><b>Trick:</b> <b>J</b>ustify = <b>J</b>ust the main axis (the row); Align-items = the <b>A</b>cross axis.</div>
+<div class="trap"><b>Trap:</b> with <code>flex-direction: column</code> the axes swap: justify-content then works vertically.</div></en>
+<fr><h3>Comment ça marche</h3><ul>
+<li><code>display: flex</code> se met sur le <b>PARENT</b> : ses enfants directs s’alignent tout seuls en ligne.</li>
+<li><code>justify-content</code> répartit sur l’<b>axe PRINCIPAL</b> (la ligne) : flex-start, flex-end, center, space-between (espace seulement ENTRE les éléments), space-around (espace AUTOUR de chaque élément).</li>
+<li><code>align-items</code> aligne sur l’<b>axe TRANSVERSAL</b> (vertical dans une ligne) : stretch (défaut), flex-start, flex-end, center, baseline. <code>align-self</code> le fait pour UN seul élément.</li>
+<li><code>flex: 1</code> / <code>flex: 3</code> : les éléments se partagent l’espace libre en proportion → colonnes de 1/4 et 3/4.</li>
+<li><code>flex-direction</code> : row (défaut), column, row-reverse, column-reverse. <code>flex-wrap: wrap</code> passe à la ligne suivante quand c’est plein.</li></ul>
+<h3>Pourquoi</h3><ul><li>Flexbox est la mise en page moderne : barres de navigation, colonnes, centrage parfait (center + center). Float ne sert qu’à habiller une image de texte.</li></ul>
+<div class="tip"><b>Astuce :</b> <b>J</b>ustify = l’axe principal (la ligne) ; Align-items = l’axe transversal.</div>
+<div class="trap"><b>Piège :</b> avec <code>flex-direction: column</code> les axes s’inversent : justify-content agit alors verticalement.</div></fr></section>
+
+<section><h2>13. <en class="i">Clean code and quick wrong / right</en><fr class="i">Code propre et faux / juste</fr></h2>
+<en><ul>
+<li><b>One external file</b> (style.css): no inline styles, no !important.</li>
+<li><b>One declaration per line</b>, indented by 2 spaces, always ending with “;”.</li>
+<li><b>Group</b> shared styles (<code>h1, h2, h3 { … }</code>) and use classes instead of repeating lines.</li>
+<li><b>Classes over ids</b>: an id weighs 100 and is unique; a class weighs 10 and is reusable. Name by meaning (<code>.carte</code>), not by look.</li>
+<li><b>Short selectors</b>: avoid <code>#boissons ul li a</code>; heavy selectors are hard to override.</li>
+<li><b>Order</b>: base (*, body) → header/nav → layout → components → table → footer, with a comment title per block.</li>
+<li><b>Shorthands</b> and <b>relative units</b>; reset once: <code>* { box-sizing: border-box; } body { margin: 0; }</code>.</li>
+<li><b>Test</b>: change one value and look; the inspector (F12) shows which rule wins.</li></ul>
+<table class="x"><tr><th>✗ Wrong</th><th>✓ Right</th></tr><tr><td>color = red</td><td>color: red;</td></tr><tr><td>font-size: 1,2em</td><td>font-size: 1.2em</td></tr><tr><td>font-size: 16</td><td>font-size: 16px</td></tr><tr><td>color: ff0000</td><td>color: #ff0000</td></tr><tr><td>url (a.png)</td><td>url('a.png')</td></tr><tr><td>text-decoration: underlined</td><td>text-decoration: underline</td></tr><tr><td>border: 3px blue</td><td>border: 3px solid blue</td></tr><tr><td>// comment</td><td>/* comment */</td></tr><tr><td>display: absolute</td><td>position: absolute</td></tr><tr><td>h1, em (for “em in h1”)</td><td>h1 em</td></tr><tr><td>h3 + p (for all following p)</td><td>h3 ~ p</td></tr><tr><td>a[title=ici] (for “contains”)</td><td>a[title*='ici']</td></tr><tr><td>margin: 20px (to air the content)</td><td>padding: 20px</td></tr><tr><td>img { width: 800px; }</td><td>img { max-width: 100%; }</td></tr></table>
+<div class="tip"><b>Last-day check:</b> re-read chapters 4 (selectors), 5 (cascade), 6 (box) and the traps: they hold most of the exam points.</div></en>
+<fr><ul>
+<li><b>Un seul fichier externe</b> (style.css) : pas de style inline, pas de !important.</li>
+<li><b>Une déclaration par ligne</b>, indentée de 2 espaces, toujours terminée par « ; ».</li>
+<li><b>Regrouper</b> les styles communs (<code>h1, h2, h3 { … }</code>) et utiliser des classes au lieu de répéter des lignes.</li>
+<li><b>Classes plutôt qu’ids</b> : un id pèse 100 et est unique ; une classe pèse 10 et est réutilisable. Nommer selon le sens (<code>.carte</code>), pas selon l’apparence.</li>
+<li><b>Sélecteurs courts</b> : éviter <code>#boissons ul li a</code> ; les sélecteurs lourds sont difficiles à surcharger.</li>
+<li><b>Ordre</b> : base (*, body) → header/nav → mise en page → composants → tableau → footer, avec un commentaire-titre par bloc.</li>
+<li><b>Raccourcis</b> et <b>unités relatives</b> ; reset une fois : <code>* { box-sizing: border-box; } body { margin: 0; }</code>.</li>
+<li><b>Tester</b> : changer une valeur et regarder ; l’inspecteur (F12) montre quelle règle gagne.</li></ul>
+<table class="x"><tr><th>✗ Faux</th><th>✓ Juste</th></tr><tr><td>color = red</td><td>color: red;</td></tr><tr><td>font-size: 1,2em</td><td>font-size: 1.2em</td></tr><tr><td>font-size: 16</td><td>font-size: 16px</td></tr><tr><td>color: ff0000</td><td>color: #ff0000</td></tr><tr><td>url (a.png)</td><td>url('a.png')</td></tr><tr><td>text-decoration: underlined</td><td>text-decoration: underline</td></tr><tr><td>border: 3px blue</td><td>border: 3px solid blue</td></tr><tr><td>// commentaire</td><td>/* commentaire */</td></tr><tr><td>display: absolute</td><td>position: absolute</td></tr><tr><td>h1, em (pour « em dans h1 »)</td><td>h1 em</td></tr><tr><td>h3 + p (pour tous les p suivants)</td><td>h3 ~ p</td></tr><tr><td>a[title=ici] (pour « contient »)</td><td>a[title*='ici']</td></tr><tr><td>margin: 20px (pour aérer le contenu)</td><td>padding: 20px</td></tr><tr><td>img { width: 800px; }</td><td>img { max-width: 100%; }</td></tr></table>
+<div class="tip"><b>Dernier jour :</b> relire les chapitres 4 (sélecteurs), 5 (cascade), 6 (boîte) et les pièges : ils concentrent la plupart des points d’examen.</div></fr></section>
+</main>
+<script>
+var b=document.body,l=document.getElementById('lb');
+l.onclick=function(){var fr=b.getAttribute('data-l')==='en';b.setAttribute('data-l',fr?'fr':'en');document.documentElement.lang=fr?'fr':'en';l.textContent=fr?'English':'Français'};
+</script>
+</body></html>
